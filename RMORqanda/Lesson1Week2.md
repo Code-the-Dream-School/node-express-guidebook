@@ -2,17 +2,17 @@
 
 ### RMOR Week 2 on Lesson 1 content:
 
-1. What is Node.js primarily used for? (Select 2) - **ANSWERS: A and B**
+1. What is Node.js primarily used for? (Select 2) - **ANSWERS: B and D**
 
    **NOTE:** on this question, students are encouraged to answer the question aloud too to practice describing the concept as if in an interview scenario.
 
-   **a) Front-end development**
+   a) Front-end development
 
    **b) Server-side scripting**
 
    c) Database management
 
-   d) Backend development
+   **d) Back-end development**
 
 
 
@@ -30,9 +30,9 @@
 
 
  
-3. How do you include external modules in a Node.js application? - **ANSWER: C**
+3. How do you include external modules in a Node.js application? (Select two) - **ANSWERS: A and C**
 
-   a) import
+   **a) import**
 
    b) include
 
