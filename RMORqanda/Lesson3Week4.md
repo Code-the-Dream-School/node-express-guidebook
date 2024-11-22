@@ -64,6 +64,19 @@ console.log(found);
    **d) Strings**
 
 
-6. In your own words describe a RESTful API
+
+6. What is middleware's purpose in Node? (select all that apply) **ANSWERS: A, C, D**
+
+   **a) Process requests to modify or inspect a request between request and response**
+
+   b) Complete the request requirements which would not run at all without the use of middleware
+
+   **c) Add functionality like error handling, data parsing, or logging**
+
+   **d) Control the flow of a request/response to determine if the request should be passed along or stopped**
+
+
+
+7. In your own words describe a RESTful API
 
    An example answer: a way for applications to communicate over the web using standard HTTP methods like GET, POST, PUT, and DELETE to manage resources. It organizes resources (such as data or services) into URLs, allowing clients to interact with them in a simple, stateless manner. The API typically returns data in formats like JSON or XML, making it easy to integrate with various systems.
