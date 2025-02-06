@@ -238,6 +238,30 @@
 
 ---
 
-18. Describe your project's functionality, purpose, features, and technology used as if it was already complete. (Written response and speak this question aloud as if interviewing)
+18. What does the unique: true property do in a Mongoose schema? **ANSWER: B**
+
+    A. Ensures that a field cannot be null
+
+    **B. Enforces that the field's value is unique in the collection**
+
+    C. Automatically indexes the field
+
+    D. Encrypts the field's value
+
+---
+
+19. What is the purpose of indexing in MongoDB? **ANSWER: A**
+
+    **A. To improve query performance by reducing search time**
+
+    B. To duplicate data across multiple collections
+
+    C. To enforce unique constraints on fields
+
+    D. To back up the database automatically
+
+---
+
+20. Describe your project's functionality, purpose, features, and technology used as if it was already complete. (Written response and speak this question aloud as if interviewing)
 
     **Answers will vary**
