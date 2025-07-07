@@ -1,6 +1,6 @@
 # Node.js/Express Learning Objectives
 
-***Note:** These learning objectives reflect Code the Dream's 15-week Node.js/Express course. These will be updated in spring 2026, when the course shifts to 11 weeks. 
+***Note:** These learning objectives reflect Code the Dream's 15-week Node.js/Express course. These will be updated in spring 2026, when the course shifts to 11 weeks.*
 
 ## Overall Learning Objectives
 
