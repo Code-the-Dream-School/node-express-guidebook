@@ -1,48 +1,77 @@
-# Lesson 2: NPM & Async Patterns — Group Mentor Guide
+# Week 2: NPM & Async Patterns — Group Mentor Guide
 
 Welcome to Week 2! This week, students learned about:
 
 - Using `npm` and managing project dependencies
 - Writing asynchronous code with Promises and `async/await`
-- Using Node's built-in `fs.promises`
-- Handling errors with `try/catch` and `.then().catch()`
-- Creating and handling custom events with `EventEmitter`
-- Reading data with streams
+- Node’s EventEmitter system and streams
 
-They worked primarily in the `01-node-tutorial/answers` folder.
+They continued working in the `01-node-tutorial/answers` directory using the same repo they set up last week.
 
-## 🧠 Session Planning Overview
+## 🧊 Warm-Up (5–10 minutes)
 
-**Explore Sessions** focus on digging into new concepts through discussion and light demos.  
-**Apply Sessions** focus on hands-on support, debugging, and practicing assignment patterns.
+Choose **one** of these to build connection or review past content:
 
-## 🧭 Explore Session Prompts
+**👋 Relationship-Building**
+- What’s a small win you had this week (coding or non-coding)?
+- What’s one piece of tech you use every day that you don’t fully understand?
 
-Choose 1–2 of these to spark discussion or mini-demos:
+**💡 Check for Understanding (from Week 1)**
+- What’s one thing you remember about how Node handles files?
+- Who remembers what `__dirname` is?
+- What was confusing about setting up your repo or project structure?
 
-- Why is async programming so important in Node?
-- What are the pros/cons of `async/await` vs `.then()`?
-- How does Node's `EventEmitter` compare to things like browser events?
-- What exactly does `npm install` do behind the scenes?
+## 🧭 Explore vs. Apply — Session Formats
 
-🧑‍🏫 *Mini-Demo idea:*  
-Open a small JS file and show how `await` only works inside `async` functions — then contrast with chaining `.then()`.
+**Explore Sessions** → Big-picture understanding, discussion, mini-demos  
+**Apply Sessions** → Practice with guidance, code review, debugging
 
-## 🛠️ Apply Session Activities
+**Mix-and-match** is totally fine!
+
+## ⏱️ Sample Timing for 1-Hour Session
+
+| Time      | Activity                            |
+|-----------|-------------------------------------|
+| 0:00–0:10 | Warm-up + review of last week       |
+| 0:10–0:30 | Explore concepts or code walkthrough |
+| 0:30–0:50 | Apply: troubleshoot assignment code  |
+| 0:50–1:00 | Wrap-up + reflection/check-in        |
+
+## ❓ CFU (Check for Understanding) Questions
+
+Before diving into coding or discussion, use 2–3 of these to check where students are:
+
+- What’s the difference between `npm install` and `npm install --save-dev`?
+- What’s a Promise? When do you use `await`?
+- Why might we use `try/catch` with async code?
+- What does `EventEmitter` let us do?
+
+## 🧑‍🏫 Explore Prompts (Pick 1–2)
 
 Use these for live practice, assignment troubleshooting, or group problem-solving. Remember to use the ["I Do, We Do, You Do" model of gradual release](https://coda.io/d/_dAM9Xiy8hnR/Teaching-Notes_suWDehoD) for mentor sessions.
 
+- Why is async programming so important in Node?
+- When might you use `.then()` chaining instead of `await`?
+- How does an event-driven system help scalability?
+- What exactly happens when you run `npm install`?
+
+## 🛠️ Apply Prompts (Pick 1–2)
+
+Use these for live practice, assignment troubleshooting, or group problem-solving. Remember to use the ["I Do, We Do, You Do" model of gradual release](https://coda.io/d/_dAM9Xiy8hnR/Teaching-Notes_suWDehoD) for mentor sessions.
+
+Focus on the actual code students are writing. Share screens or live-code as a group.
+
 ### 🔧 Assignment Hotspots
-- Forgetting to use `await` in `async` functions
-- Not wrapping async calls in `try/catch`
-- Confusion about how `.then()` chaining works
-- Misunderstanding what `EventEmitter` is for
+- Forgot to `await` inside `async` functions
+- Not wrapping async code in `try/catch`
+- Using `await` outside of an `async` function (syntax error)
+- Misunderstanding what `.then()` returns or when `.catch()` runs
 
 ### ✅ Try This Live
 
 > “Let’s write a tiny async program together!”
 
-```js
+<pre><code class="language-js">
 const { writeFile, readFile } = require("fs").promises;
 
 const writeAndRead = async () => {
@@ -56,26 +85,36 @@ const writeAndRead = async () => {
 };
 
 writeAndRead();
-```
-**Follow-up:**
-  * Ask students: “What happens if you forget await?”
-  * Add a second writeFile and discuss chaining
+</code></pre>
 
- ## 💡 Optional Challenges (Advanced or Fast Groups)
- * Modify the above to emit a custom event ("file-written") after the file is saved
- * Convert the above code into .then() chaining instead of async/await
- * Build a timer that emits an event every 3 seconds, logs it, and stops after 5 events
+Ask:
+- “What happens if you forget `await`?”
+- “Can we rewrite this using `.then()` chaining?”
+
+## 💬 Engagement Strategies (if students are quiet)
+
+- **Think Time + Chat**: “Take a minute to try this yourself. Then post your code or question in the chat.”
+- **Pick One**: “Which of these async patterns would *you* rather use and why: `async/await` or `.then()`?”
+- **Vote + Explain**: “Raise your hand (or emoji) if you’ve ever seen a `Promise {<pending>}` in your terminal — what caused it?”
+- **Start Messy**: “Let’s write some broken code and fix it together!”
+
+## 💡 Optional Challenges
+
+For advanced students or extra practice:
+
+- Emit a custom event after writing to a file
+- Chain three Promises using `.then()`
+- Create an event handler that waits for an event using a Promise
 
 ## 📎 Resources & Links
 
 - [Assignment Instructions (Week 2)](https://raw.githubusercontent.com/Code-the-Dream-School/node-v3/refs/heads/main/assignments/02NPMandAsyncPatterns.md)
-- [Node.js/Express Mentor Guidebook Wiki](https://github.com/Code-the-Dream-School/node-express-guidebook/wiki/Curriculum-and-Teaching-Resources)
+- [Mentor Guidebook: Node.js](https://github.com/Code-the-Dream-School/node-express-guidebook/wiki/Curriculum-and-Teaching-Resources)
 - [MDN: Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Video: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
-## ✅ Quick Checklist
+## ✅ Mentor To-Do
 
-- [ ] Pick an Explore or Apply focus for your session
-- [ ] Try a "Live Coding" prompt with your group
-- [ ] Help students identify bugs in their async code
+- [ ] Run a session based on the options above
+- [ ] Help students debug async code or assignment logic
 - [ ] Submit your [Mentor Session Report](https://airtable.com/appoSRJMlXH9KvE6w/shrp0jjRtoMyTXRzh) after class
