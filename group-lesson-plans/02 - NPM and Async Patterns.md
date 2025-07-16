@@ -64,8 +64,8 @@ const writeAndRead = async () => {
 writeAndRead();
 ```
 **Follow-up:**
-	•	Ask students: “What happens if you forget await?”
-	•	Add a second writeFile and discuss chaining
+  * Ask students: “What happens if you forget await?”
+  * Add a second writeFile and discuss chaining
 
  ## 💡 Optional Challenges (Advanced or Fast Groups)
  * Modify the above to emit a custom event ("file-written") after the file is saved
