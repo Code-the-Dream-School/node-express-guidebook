@@ -71,3 +71,19 @@ writeAndRead();
  * Modify the above to emit a custom event ("file-written") after the file is saved
  * Convert the above code into .then() chaining instead of async/await
  * Build a timer that emits an event every 3 seconds, logs it, and stops after 5 events
+
+   ## 📎 Resources & Links
+
+- [Assignment Instructions (Week 2)](https://raw.githubusercontent.com/Code-the-Dream-School/node-v3/refs/heads/main/assignments/02NPMandAsyncPatterns.md)
+- [Node.js/Express Mentor Guidebook Wiki](https://github.com/Code-the-Dream-School/node-express-guidebook/wiki/Curriculum-and-Teaching-Resources)
+- [MDN: Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [Video: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+
+---
+
+## ✅ Quick Checklist
+
+- [ ] Pick an Explore or Apply focus for your session
+- [ ] Try a "Live Coding" prompt with your group
+- [ ] Help students identify bugs in their async code
+- [ ] Submit your [Mentor Session Report](https://airtable.com/appoSRJMlXH9KvE6w/shrp0jjRtoMyTXRzh) after class
