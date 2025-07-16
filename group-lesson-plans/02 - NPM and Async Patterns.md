@@ -11,14 +11,10 @@ Welcome to Week 2! This week, students learned about:
 
 They worked primarily in the `01-node-tutorial/answers` folder.
 
----
-
 ## 🧠 Session Planning Overview
 
 **Explore Sessions** focus on digging into new concepts through discussion and light demos.  
 **Apply Sessions** focus on hands-on support, debugging, and practicing assignment patterns.
-
----
 
 ## 🧭 Explore Session Prompts
 
@@ -31,8 +27,6 @@ Choose 1–2 of these to spark discussion or mini-demos:
 
 🧑‍🏫 *Mini-Demo idea:*  
 Open a small JS file and show how `await` only works inside `async` functions — then contrast with chaining `.then()`.
-
----
 
 ## 🛠️ Apply Session Activities
 
@@ -72,14 +66,12 @@ writeAndRead();
  * Convert the above code into .then() chaining instead of async/await
  * Build a timer that emits an event every 3 seconds, logs it, and stops after 5 events
 
-   ## 📎 Resources & Links
+## 📎 Resources & Links
 
 - [Assignment Instructions (Week 2)](https://raw.githubusercontent.com/Code-the-Dream-School/node-v3/refs/heads/main/assignments/02NPMandAsyncPatterns.md)
 - [Node.js/Express Mentor Guidebook Wiki](https://github.com/Code-the-Dream-School/node-express-guidebook/wiki/Curriculum-and-Teaching-Resources)
 - [MDN: Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [Video: What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
-
----
 
 ## ✅ Quick Checklist
 
