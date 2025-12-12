@@ -12,25 +12,25 @@ Welcome to Week 4! This week, students:
 They are working in the `02-express-tutorial` folder on the `week4` branch.
 
 
-## 🧊 Warm-Up (5–10 minutes)
+## Warm-Up (5–10 minutes)
 
 Choose **one** to start the session:
 
-**👋 Relationship-Building**
+**Relationship-Building**
 - What’s one app or service you use daily that you wish worked better?
 - If you could instantly master one programming skill, what would it be?
 
-**💡 Check for Understanding (from Week 3)**
+**Check for Understanding (from Week 3)**
 - What’s the difference between a route parameter and a query string?
 - Why does the order of middleware and routes matter?
 - What does `express.static()` do?
 
-## 🧭 Explore vs. Apply — Session Formats
+## Explore vs. Apply — Session Formats
 
 **Explore Sessions** → Concept overviews, discussion, quick demos  
 **Apply Sessions** → Live coding, debugging, Postman practice
 
-## ⏱️ Sample Timing for 1-Hour Session
+## Sample Timing for 1-Hour Session
 
 | Time      | Activity                                     |
 |-----------|----------------------------------------------|
@@ -39,14 +39,14 @@ Choose **one** to start the session:
 | 0:30–0:50 | Apply: build/test API routes together         |
 | 0:50–1:00 | Wrap-up + reflections                        |
 
-## ❓ Check for Understanding (Pick 2–3)
+## Check for Understanding (Pick 2–3)
 
 - What is middleware and when does it run?
 - Why must `express.json()` come before your `POST` routes?
 - What’s the difference between PUT and PATCH?
 - How can you test an API route without building a frontend?
 
-## 🧑‍🏫 Explore Prompts (Discussion & Demos)
+## Explore Prompts (Discussion & Demos)
 
 - Show how middleware fits into the **request → middleware → route handler** flow
 - Compare HTML form submissions vs. JSON body submissions
@@ -55,23 +55,23 @@ Choose **one** to start the session:
   - Send a GET request to `/api/v1/people` in Postman
   - Send a POST request with JSON in Postman
 
-🧑‍💻 *Mini-Demo Idea:*  
+*Mini-Demo Idea:*  
 > Add `app.use(express.json())`  
 > Create a `/api/v1/people` POST route that:
 > - Checks for `req.body.name`
 > - Returns 400 if missing
 > - Adds person if present, returning 201
 
-## 🛠️ Apply Prompts (Live Coding & Troubleshooting)
+## Apply Prompts (Live Coding & Troubleshooting)
 
-### 🔧 Assignment Hotspots
+### Assignment Hotspots
 - Middleware placed **after** routes, so it never runs
 - Forgetting to call `next()` in middleware → request hangs
 - Not parsing JSON before using `req.body`
 - Returning 200 for errors instead of 400/404
 - Forgetting to test routes in Postman before moving on
 
-### ✅ Try This Live
+### Try This Live
 
 > “Let’s create a middleware + route flow together.”
 
@@ -94,14 +94,14 @@ Follow-up challenges:
 - Add a GET `/api/v1/people/:id` route that returns 404 if not found
 - Try sending these requests in Postman
 
-## 💬 Engagement Strategies (for quiet groups)
+## Engagement Strategies (for quiet groups)
 
 - **Postman Challenge**: Have each student send a valid POST and then a failing POST request
 - **Fix This Middleware**: Give them middleware missing `next()` and let them debug why it hangs
 - **Order Matters**: Move `express.json()` after your POST routes and see what happens
 - **Group Build**: One student codes middleware, another codes GET, another codes POST
 
-## 💡 Optional Challenges
+## Optional Challenges
 
 For students ready to go further:
 
@@ -109,13 +109,7 @@ For students ready to go further:
 - Refactor into `routes/people.js` and `controllers/people.js`
 - Add middleware that only logs requests to `/api/v1/*`
 
-## 📎 Resources & Links
-
-- [Assignment Instructions (Week 4)](https://raw.githubusercontent.com/Code-the-Dream-School/node-v3/refs/heads/main/assignments/04MiddlewareRESTMethodsPostman.md)
-- [Express Middleware Docs](https://expressjs.com/en/guide/writing-middleware.html)
-- [Postman Beginner’s Guide](https://learning.postman.com/docs/getting-started/introduction/)
-
-## ✅ Mentor To-Do
+## Mentor To-Do
 
 - [ ] Run a session using this guide  
 - [ ] Help students debug middleware + route order issues  
