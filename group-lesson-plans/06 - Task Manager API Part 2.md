@@ -10,13 +10,13 @@ Welcome to Week 6 of the Node.js course! This week, students are learning:
 
 Students are continuing the Task Manager API from last week, working in `03-task-manager/starter`.
 
----
 
-## 🧊 Warm-Up (5–10 minutes)
+
+## Warm-Up (5–10 minutes)
 
 Choose one:
 
-**👋 Relationship-Building**  
+**Relationship-Building**  
 - What’s the most confusing bug you’ve had to debug?  
 - Share a time when good error messages saved you a lot of time.  
 
@@ -25,36 +25,36 @@ Choose one:
 - Why is it important to keep `.env` out of version control?  
 - How can we use Postman to test error handling?
 
----
 
-## 🧭 Explore vs. Apply — Session Formats
+
+## Explore vs. Apply — Session Formats
 
 **Explore Sessions** → Demo creating a route with `req.params`, wrapping async handlers to avoid repetitive `try/catch`, and sending meaningful status codes & messages.  
 
 **Apply Sessions** → Students implement their own `GET /tasks/:id`, `PATCH /tasks/:id`, and `DELETE /tasks/:id` routes with validation and error handling.
 
----
 
-## ⏱️ Sample Timing for 1-Hour Session
+
+## Sample Timing for 1-Hour Session
 
 | Time      | Activity                                                        |
-|-----------|-----------------------------------------------------------------|
+|--|--|
 | 0:00–0:10 | Warm-up + review key concepts from Part 1                       |
 | 0:10–0:25 | Explore: URL params, async wrapper, error handling              |
 | 0:25–0:50 | Apply: students add/update routes and test in Postman           |
 | 0:50–1:00 | Wrap-up + share lessons learned about debugging & validation    |
 
----
 
-## ❓ Check for Understanding (Ask 2–3)
+
+## Check for Understanding (Ask 2–3)
 
 - What’s the purpose of an `asyncWrapper` middleware?  
 - Why is it useful to create a custom error class like `CustomAPIError`?  
 - When should an API return a `404` status code?  
 
----
 
-## 🧑‍🏫 Explore Prompts
+
+## Explore Prompts
 
 Show a `GET /tasks/:id` route that uses `asyncWrapper` and a custom error when a task isn’t found:
 
@@ -91,7 +91,7 @@ const updateTask = asyncWrapper(async (req, res, next) => {
 });
 \`\`\`
 
----
+
 
 ## 🛠️ Apply Prompts (Live Coding & Troubleshooting)
 
@@ -101,30 +101,30 @@ const updateTask = asyncWrapper(async (req, res, next) => {
 * Using `findById` incorrectly without error handling.  
 * Sending responses twice due to missing `return`.
 
-### ✅ Try This Live
+### Try This Live
 
 **Scenario:** Student’s `GET /tasks/:id` always returns 200, even if the task doesn’t exist.  
 Ask: Are they checking `if (!task)` before sending the response? Are they properly using `next()` with an error?
 
----
 
-## 💬 Engagement Strategies (for quiet groups)
+
+## Engagement Strategies (for quiet groups)
 
 - **Error Designer:** Give them a scenario and have them design the status code & message.  
 - **Live Debug:** Show a route with broken error handling and have the group fix it.  
 - **Postman Relay:** One student writes a failing request in Postman, another updates the code to make it pass.
 
----
 
-## 💡 Optional Challenges
+
+## Optional Challenges
 
 - Replace `asyncWrapper` with the `express-async-errors` package and compare.  
 - Create validation middleware that rejects requests missing required fields.  
 - Add a route to mark all tasks as completed in bulk.
 
----
 
-✅ **Mentor To-Do**  
+
+**Mentor To-Do**  
 - [ ] Run a session using this guide.  
 - [ ] Ensure students test both success and failure cases in Postman.  
 - [ ] Submit your [Mentor Session Report](https://airtable.com/appoSRJMlXH9KvE6w/shrp0jjRtoMyTXRzh).
