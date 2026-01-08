@@ -1,6 +1,6 @@
-# 🌐 Node Week 7: Using Query Parameters
+# Node Week 7: Using Query Parameters
 
-## 🚀 Key Concepts
+## Key Concepts
 
 ### 1. **Query Parameters & Flexible Filtering**
 Students are extending their API to support dynamic filtering via query parameters (e.g., `?featured=true&company=ikea`), allowing end users to query for products based on fields like:
@@ -33,7 +33,7 @@ Students add support for pagination through `skip` and `limit` query parameters,
 ```
 This means they skip `(page - 1) * limit` and then limit the number of results returned.
 
-## 🧠 Mindset Focus: Knowing When to Ask for Help
+## Mindset Focus: Knowing When to Ask for Help
 
 The mindset lesson this week revisits **asking for help** — not the *how*, but the *when*:
 - Students are encouraged to move beyond asking at the first sign of trouble, but also not to wait too long out of pride.
@@ -43,24 +43,24 @@ The mindset lesson this week revisits **asking for help** — not the *how*, but
   - Outer = things you *won’t* figure out alone
 - Mentors can guide students to identify when they’ve crossed into the outer ring and need support.
 
-📝 Encourage students to:
+Encourage students to:
 - Verbally explain their approach so far (rubber duck!)
 - Talk through what they’ve tested
 - Compare with the solution code if they’re truly stuck
 
-## 🔧 Common Sticking Points
+## Common Sticking Points
 
-### ❌ Misunderstanding Thenables
+### Misunderstanding Thenables
 - Students might not realize why `.sort()` or `.select()` don’t return anything themselves — remind them that these are methods chaining onto a query object.
 
-### ❌ Incorrect Parsing of Query Params
+### Incorrect Parsing of Query Params
 - Some students will try to destructure directly from `req.query` without checking for existence.
 - Others might try to apply sort, skip, or limit logic before confirming valid values.
 
-### ❌ Regex Confusion
+### Regex Confusion
 - Don’t expect mastery — guide them to borrow the regex expression from the sample code.
 
-## 🧪 Practice Prompts
+## Practice Prompts
 
 ### Explore
 - What happens if you chain `.sort()` *before* `.find()`?
@@ -71,15 +71,7 @@ The mindset lesson this week revisits **asking for help** — not the *how*, but
 - Add support for filtering by `price` range using `numericFilters`.
 - Implement support for `fields=name,price` to only return selected fields.
 
-## 🧰 Tools & Links
-
-- [🧪 Instructor Solution](https://github.com/Code-the-Dream-School/node-v3/tree/main/assignments/07QueryParameters.md)
-- [🧠 Debugging Practices](https://www.rithmschool.com/blog/debugging-like-a-scientist)
-- [📖 How to Ask for Help at Work (HBR)](https://hbr.org/2021/04/how-to-ask-for-help-at-work)
-- [🧩 Regex Tutorial](https://regexone.com/)
-- [🎯 RMOR Comprehension Check](https://airtable.com/appoSRJMlXH9KvE6w/shrBpqHbS6wgInoF9?prefill_Lessons=Node%20v3%3A%20Lesson%207%20-%20Using%20Query%20Parameters)
-
-## 🧑‍🏫 Mentor Tips
+## Mentor Tips
 
 - Encourage exploration of Postman queries — it’s critical for understanding how parameters interact.
 - Help demystify the "magic" of chaining Mongoose methods. Once students see the `.find()` query as a *builder*, the rest clicks.
