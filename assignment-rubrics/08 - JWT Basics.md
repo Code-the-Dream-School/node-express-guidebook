@@ -1,124 +1,96 @@
-# Node.js: JWT Basics — Group Mentor Guide
+# Node.js: JWT Basics
 
-Welcome to Week 8 of the Node.js course! This week, students are learning:
+| Week | Topic      | Learning Objective |
+|------|------------|--------------------|
+| 8    | JWT Basics | Students will be able to implement JWT authentication; protect routes with authentication middleware; use jwt.sign() and jwt.verify(); and test protected endpoints in Postman.
 
-- How to implement authentication using JSON Web Tokens (JWT)
-- How to hash passwords securely
-- How to protect routes with authentication middleware
-- How to use `jsonwebtoken` package (`jwt.sign` and `jwt.verify`)
-- How to handle authentication errors properly
-- How to test protected routes in Postman
+## Assignment Rubric
 
-Students are building an Express app with `/api/v1/logon` (POST) and `/api/v1/hello` (GET) routes.
+You can mark the student's assignment as complete if they:
 
-## Warm-Up (5–10 minutes)
+- [ ] Created `preferred` folder inside `05-JWT-Basics` with proper structure
+- [ ] Initialized npm project and installed required packages (`express`, `jsonwebtoken`, `dotenv`)
+- [ ] Created `.gitignore` with `.env` and `/node_modules`
+- [ ] Organized code into `routes`, `middleware`, and `controllers` directories
+- [ ] Created `.env` file with `JWT_SECRET` (strong random string) and `JWT_LIFETIME`
+- [ ] Implemented POST `/api/v1/logon` route that returns a JWT
+- [ ] Implemented authentication middleware that validates JWT
+- [ ] Implemented protected GET `/api/v1/hello` route
+- [ ] Tested both routes successfully in Postman
+- [ ] (Optional) Created simple HTML/JS frontend
 
-Choose one:
+## Key Implementation Checkpoints
 
-**Relationship-Building**  
-- What's an app or website you log into daily? Have you ever wondered how login works behind the scenes?
-- Have you ever forgotten a password? How do you think websites know if your reset request is legitimate?
-
-**Check for Understanding (from last week)**  
-- What's the difference between query parameters and route parameters?
-- How do you access query parameters in Express?
-- What does middleware do in Express?
-
-## Explore vs. Apply — Session Formats
-
-**Explore Sessions** → Walk through JWT concepts, password hashing, and authentication flow  
-**Apply Sessions** → Debug JWT implementations, test with Postman, troubleshoot middleware
-
-## Sample Timing for 1-Hour Session
-
-| Time      | Activity                                    |
-|-----------|---------------------------------------------|
-| 0:00–0:10 | Warm-up + review middleware & error handling|
-| 0:10–0:30 | Explore: JWT flow, signing & verifying tokens|
-| 0:30–0:50 | Apply: build auth middleware & test in Postman|
-| 0:50–1:00 | Wrap-up + final questions                   |
-
-## Check for Understanding (Ask 2–3)
-
-- What is a JWT and what problem does it solve?
-- Why do we hash passwords instead of storing them as plain text?
-- What's the difference between `jwt.sign()` and `jwt.verify()`?
-- What does the Authorization header look like with a Bearer token?
-- Why do we store the JWT secret in a `.env` file?
-- What happens if a JWT is expired or invalid?
-
-## Explore Prompts
-
-Use these to demonstrate key concepts live:
-
-- Let's walk through the authentication flow — what happens when a user logs in?
-- How does a JWT get created? Let's look at `jwt.sign()` together.
-- How does the server know if a token is valid? Let's explore `jwt.verify()`.
-- What's inside a JWT? Let's decode one at jwt.io.
-
-*Mini-Demo Ideas:*  
-
-```javascript
-// Creating a JWT
-const jwt = require('jsonwebtoken');
-
-const token = jwt.sign(
-  { name: 'Alice' },           // payload
-  process.env.JWT_SECRET,      // secret key
-  { expiresIn: '24h' }         // options
-);
-
-// Verifying a JWT (synchronous)
-try {
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  console.log(decoded.name); // 'Alice'
-} catch (error) {
-  console.log('Invalid token!');
-}
-
-// Bearer token format
-const authHeader = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
-const token = authHeader.split(' ')[1]; // Get the token part
+### Project Structure
+```
+05-JWT-Basics/
+└── preferred/
+    ├── .env
+    ├── .gitignore
+    ├── package.json
+    ├── app.js
+    ├── controllers/
+    │   └── auth.js
+    ├── middleware/
+    │   └── auth.js
+    └── routes/
+        └── main.js
 ```
 
----
+### .env File
+```
+JWT_SECRET=<long-random-string-from-generator>
+JWT_LIFETIME=24h
+```
 
-## Apply Prompts (Live Coding & Troubleshooting)
+### .gitignore
+```
+.env
+/node_modules
+```
 
-### Assignment Hotspots
-* Forgetting to split the Authorization header to extract the token (need to remove "Bearer ")
-* Not wrapping `jwt.verify()` in try/catch — it throws errors!
-* Missing `.env` file or not loading it with `dotenv.config()`
-* Using weak or guessed JWT secrets instead of generated random strings
-* Forgetting to call `next()` in middleware after successful authentication
-* Not setting `req.user` before calling `next()`
-* Testing in Postman without setting up Bearer token authorization
-* Confusing when to return 401 vs 403 status codes
+### POST /api/v1/logon Controller
+```javascript
+const jwt = require('jsonwebtoken');
 
-### Try This Live
+const logon = (req, res) => {
+  const { name, password } = req.body;
+  
+  // Basic validation (optional but good practice)
+  if (!name || !password) {
+    return res.status(400).json({ message: 'Please provide name and password' });
+  }
+  
+  // Create the token
+  const token = jwt.sign(
+    { name: name },                    // payload
+    process.env.JWT_SECRET,            // secret
+    { expiresIn: process.env.JWT_LIFETIME }  // options
+  );
+  
+  res.status(200).json({ token });
+};
 
-**Let's build authentication middleware together:**
+module.exports = { logon };
+```
 
+### Authentication Middleware
 ```javascript
 const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
-  // Get the Authorization header
   const authHeader = req.header('Authorization');
   
-  // Check if header exists and starts with "Bearer "
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ message: 'unauthorized' });
   }
   
-  // Extract the token
   const token = authHeader.split(' ')[1];
   
-  // Verify the token
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { name: decoded.name }; // Store user info
-    next(); // Pass control to the route handler
+    req.user = { name: decoded.name };
+    next();
   } catch (error) {
     return res.status(401).json({ message: 'unauthorized' });
   }
@@ -127,58 +99,58 @@ const authMiddleware = (req, res, next) => {
 module.exports = authMiddleware;
 ```
 
-Ask:
-* What happens if we forget the `return` before `res.status(401)`?
-* Why do we need try/catch around `jwt.verify()`?
-* What if the token is expired? Will the catch block handle it?
+### GET /api/v1/hello Controller
+```javascript
+const hello = (req, res) => {
+  const userName = req.user.name;
+  res.status(200).json({ 
+    message: `Hello, ${userName}! Welcome to the protected route.` 
+  });
+};
 
-## Engagement Strategies (for quiet groups)
+module.exports = { hello };
+```
 
-* Debug Together: "Your token isn't working in Postman — let's check the Authorization tab."
-* JWT Decoder: "Let's paste this token into jwt.io and see what's inside!"
-* Error Hunt: "What status code should we return if the token is missing vs invalid?"
-* Pair Testing: "One person create a token, the other verify it — does it work?"
+### Routes Setup
+```javascript
+const express = require('express');
+const router = express.Router();
+const { logon } = require('../controllers/auth');
+const { hello } = require('../controllers/auth');
+const authMiddleware = require('../middleware/auth');
 
-## Postman Setup (Critical!)
+router.post('/logon', logon);
+router.get('/hello', authMiddleware, hello);  // Protected route
 
-**Setting up Bearer Token Authorization:**
-1. Do the POST request to `/api/v1/logon`
-2. Copy the token from the response
-3. Go to GET request → Authorization tab
-4. Select "Bearer Token" from dropdown
-5. Paste the token
-6. Save and send the request
+module.exports = router;
+```
 
-**Auto-saving tokens (bonus):**
-1. Create a "JWT Basics" environment in Postman
-2. In POST request Tests tab, add:
-   ```javascript
-   const jsonData = pm.response.json();
-   pm.environment.set("token", jsonData.token);
-   ```
-3. In GET request Authorization, use `{{token}}` as the value
-4. Now the token auto-updates after each login!
+### App.js Setup
+```javascript
+require('dotenv').config();
+const express = require('express');
+const app = express();
 
-## Optional Challenges
+const mainRouter = require('./routes/main');
 
-- Add a token expiration check and return a specific error message
-- Create a `/api/v1/refresh` route that issues a new token
-- Add a simple HTML/JS frontend in `public/` folder
-- Store user roles in the JWT and check permissions
-- Add error handling middleware using `StatusError` class
-- Use async versions of `jwt.sign()` and `jwt.verify()`
+// Middleware
+app.use(express.json());
+app.use('/api/v1', mainRouter);
 
-## Security Reminders for Students
+const port = process.env.PORT || 3000;
 
-- Never commit `.env` files (add to `.gitignore`)
-- Use strong, random JWT secrets (not "mysecret123")
-- Tokens should expire (use `expiresIn`)
-- Never store passwords in plain text
-- HTTPS only in production (not covered this week, but important!)
+const start = async () => {
+  try {
+    app.listen(port, () => {
+      console.log(`Server is listening on port ${port}...`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-## Mentor To-Do
-- [ ] Run a session using this guide  
-- [ ] Verify students have `.env` in their `.gitignore`
-- [ ] Check that students are using generated secrets, not weak strings
-- [ ] Help students set up Postman authorization correctly
-- [ ] Submit your [Mentor Session Report](https://airtable.com/appoSRJMlXH9KvE6w/shrp0jjRtoMyTXRzh)
+start();
+```
+- Some students find middleware flow confusing — be patient
+- Postman setup can be tricky — walk through if needed
+- Emphasize security best practices (secrets, .gitignore, etc.)
